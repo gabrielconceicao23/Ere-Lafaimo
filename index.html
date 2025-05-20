@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='icon' href='Imagens/Ferpinha.ico' type='image/png'>
+    <title>Ere Lafaimo</title>
+    <style type="text/css">
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #1f1f1f;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            max-width: 650px;
+            width: 100%;
+        }
+        h1 {
+            color: #fff;
+            margin-bottom: 23px;
+        }
+        p {
+            color: #b0b0b0;
+            margin-bottom: 20px;
+        }
+        label {
+            display: none;
+        }
+        input[type="number"] {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            font-size: 1em;
+            background-color: #333;
+            color: #fff;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #e0e0e0;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .success {
+            color: #28a745;
+        }
+        .error {
+            color: #dc3545;
+        }
+        .warning {
+            color: #ffc107;
+        }
+        #reset {
+            display: none;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #6c757d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #reset:hover {
+            background-color: #5a6268;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ere Lafaimo - Jogo de Adivinhação</h1>
+        <p>Tente adivinhar o número entre 1 e 100:</p>
+        <label for="palpite">Digite seu palpite</label>
+        <input type="number" id="palpite" min="1" max="100">
+        <button id="btnAdivinhar" onclick="verificarPalpite()">Adivinhar</button>
+        <p id="tentativasRestantes">Tentativas restantes: 10</p>
+        <div id="resultado"></div>
+        <button id="reset" onclick="reiniciarJogo()">Jogar Novamente</button>
+    </div>
+
+    <script>
+        let numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+        let tentativas = 0;
+        const maxTentativas = 10;
+
+        const palpiteInput = document.getElementById('palpite');
+        const resultado = document.getElementById('resultado');
+        const tentativasRestantes = document.getElementById('tentativasRestantes');
+        const resetBtn = document.getElementById('reset');
+        const btnAdivinhar = document.getElementById('btnAdivinhar');
+
+        palpiteInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                verificarPalpite();
+            }
+        });
+
+        function verificarPalpite() {
+            const palpite = parseInt(palpiteInput.value);
+
+            if (isNaN(palpite) || palpite < 1 || palpite > 100) {
+                resultado.textContent = 'Por favor, insira um número válido entre 1 e 100.';
+                resultado.className = 'error';
+                return;
+            }
+
+            tentativas++;
+            tentativasRestantes.textContent = `Tentativas restantes: ${maxTentativas - tentativas}`;
+
+            if (palpite === numeroAleatorio) {
+                resultado.textContent = `Parabéns! Você acertou em ${tentativas} tentativa(s)!`;
+                resultado.className = 'success';
+                finalizarJogo();
+                return;
+            }
+
+            if (tentativas >= maxTentativas) {
+                resultado.textContent = `Você atingiu o limite de ${maxTentativas} tentativas! O número era ${numeroAleatorio}.`;
+                resultado.className = 'error';
+                finalizarJogo();
+                return;
+            }
+
+            const diferenca = Math.abs(palpite - numeroAleatorio);
+            if (palpite < numeroAleatorio) {
+                resultado.textContent = diferenca <= 5 ? 'Quente! Um pouco mais alto!' : 'Muito baixo! Tente novamente.';
+            } else {
+                resultado.textContent = diferenca <= 5 ? 'Quente! Um pouco mais baixo!' : 'Muito alto! Tente novamente.';
+            }
+            resultado.className = 'warning';
+        }
+
+        function finalizarJogo() {
+            palpiteInput.disabled = true;
+            btnAdivinhar.disabled = true;
+            resetBtn.style.display = 'inline-block';
+        }
+
+        function reiniciarJogo() {
+            numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+            tentativas = 0;
+            resultado.textContent = '';
+            resultado.className = '';
+            tentativasRestantes.textContent = `Tentativas restantes: ${maxTentativas}`;
+            palpiteInput.value = '';
+            palpiteInput.disabled = false;
+            btnAdivinhar.disabled = false;
+            resetBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
