@@ -31,16 +31,9 @@ Você consegue acertar com o menor número de tentativas possível?
 
 ---
 
-## 📷 Imagem de prévia (opcional)
-
-Você pode adicionar um print da tela aqui futuramente, exemplo:
-
-```markdown
-![Ere Lafaimo - print do jogo](Imagens/preview.png)
-
 
 🧠 Autor
 
-Gabriel da Costa Conceição
+Gabriel Conceição
 💻 Desenvolvedor Web | 👾 Criador de jogos
 📫 Contato via GitHub
