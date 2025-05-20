@@ -1,57 +1,46 @@
-# Ere Lafaimo — Jogo de Adivinhação 🎯
+# 🎮 Ere Lafaimo — Jogo de Adivinhação
 
-Bem-vindo ao **Ere Lafaimo**, um jogo simples e divertido onde o jogador tenta adivinhar um número secreto entre 1 e 100 escolhido aleatoriamente pelo computador.
+Bem-vindo ao **Ere Lafaimo**, um jogo simples e divertido de adivinhação em que o jogador tenta descobrir qual número o computador escolheu entre 1 e 100.
 
----
-
-## 🕹️ Como jogar
-
-1. Digite um número entre 1 e 100 no campo de entrada.
-2. Clique em **"Adivinhar"**.
-3. O jogo irá informar se o seu palpite está muito alto, muito baixo ou **"quente"** (próximo do número certo).
-4. Você tem até **10 tentativas** para acertar.
-5. Ao acertar ou atingir o limite de tentativas, você poderá clicar em **"Jogar Novamente"**.
+Você consegue acertar com o menor número de tentativas possível?
 
 ---
 
-## 💻 Tecnologias usadas
+## 📌 Como jogar
+
+1. O computador escolhe aleatoriamente um número de 1 a 100.
+2. Digite seu palpite e clique em **Adivinhar**.
+3. Receba dicas como:
+   - 🔥 "Quente!" (se estiver próximo)
+   - 🧊 "Muito alto" ou "Muito baixo"
+4. Você tem **10 tentativas**. Boa sorte!
+
+---
+
+## ▶️ Jogue agora
+
+[![Jogar Agora](https://img.shields.io/badge/%F0%9F%8E%B2-Jogar%20Agora-blue?style=for-the-badge)](https://gabrielconceicao23.github.io/Ere-Lafaimo/)
+
+---
+
+## 🛠️ Tecnologias usadas
 
 - HTML5
-- CSS3
-- JavaScript
+- CSS3 (modo dark moderno)
+- JavaScript (lógica do jogo)
 
 ---
 
-## 📁 Estrutura do projeto
+## 📷 Imagem de prévia (opcional)
 
-Ere Lafaimo/
-├── index.html
-├── Imagens/
-│ └── Ferpinha.ico
-└── README.md
+Você pode adicionar um print da tela aqui futuramente, exemplo:
+
+```markdown
+![Ere Lafaimo - print do jogo](Imagens/preview.png)
 
 
----
-
-## 🚀 Como executar
-
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/gabrielconceicao23/Ere-Lafaimo.git
-
-    Abra o arquivo index.html no navegador.
-
-📌 Observações
-
-    O jogo funciona diretamente no navegador, sem necessidade de instalação.
-
-    O ícone do site está localizado em Imagens/Ferpinha.ico.
-
-📃 Licença
-
-Este projeto está sob a licença MIT — sinta-se livre para usar, modificar e distribuir.
-👨‍💻 Autor
+🧠 Autor
 
 Gabriel da Costa Conceição
-Desenvolvedor, educador e entusiasta de tecnologia.
-GitHub
+💻 Desenvolvedor Web | 👾 Criador de jogos
+📫 Contato via GitHub
